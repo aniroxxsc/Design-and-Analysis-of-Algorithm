@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int Fabonacci_Series(int k){
+    if(k<=1){
+        return k;
+    }
+    else{
+        return Fabonacci_Series(k-2)+Fabonacci_Series(k-1);
+    }
+}
+
+int main(){
+    int k;
+    cout<<"enter the number";
+    cin>>k;
+    cout<<Fabonacci_Series(k);
+    return 0;
+}
