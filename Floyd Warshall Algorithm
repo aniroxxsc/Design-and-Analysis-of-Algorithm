@@ -1,0 +1,40 @@
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+vector<vector<int> > Floyd_Warshall(vector<vector<int> > graph,int n){
+    for(int k=0;k<n;k++){
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(graph[i][j]>graph[i][k]+graph[k][j])
+                    graph[i][j]=graph[i][k]+graph[k][j];
+            }
+        }
+    }
+    return graph;
+}
+
+
+
+int main(){
+    int n;
+    cin>>n;
+    vector<vector<int> > graph(n);
+    vector<vector<int> > re;
+    for(int i=0;i<n;i++){
+        vector<int> temp(n);
+        for(int j=0;j<n;j++){
+            cin>>temp[j];
+        }
+        graph[i]=temp;
+    }
+    re=Floyd_Warshall( graph, n);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cout<<re[i][j]<<"    ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
